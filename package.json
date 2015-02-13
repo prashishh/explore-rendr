@@ -67,6 +67,7 @@
     "grunt-env": "^0.4.1",
     "grunt-karma": "~0.6.2",
     "grunt-mocha-test": "latest",
-    "grunt-nodemon": "0.2.0"
+    "grunt-nodemon": "0.2.0",
+    "rendr": "^1.0.0"
   }
 }
