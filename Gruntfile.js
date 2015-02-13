@@ -6,10 +6,19 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     copy: {
-      dev: {
+      all: {
         files: [
           {
-          
+            expand: true, cwd: 'bower_components/backbone',
+            src: ['backbone.js'], dest: 'public/lib'
+          },
+          {
+            expand: true, cwd: 'bower_components/handlebars.js/lib',
+            src: ['handlebars.js'], dest: 'public/lib'
+          },
+          {
+            expand: true, cwd: 'bower_components/underscore',
+            src: ['underscore.js'], dest: 'public/lib'
           }
         ]
       }
@@ -17,7 +26,8 @@ module.exports = function(grunt) {
     clean: {
       lib: {
         src: [
-
+          'public/lib',
+          'public/css/lib'
         ]
       }
     },
@@ -26,37 +36,42 @@ module.exports = function(grunt) {
         files: ['Gruntfile.js', 'app.js', 'app/**/*.js', 'public/js/**', 'test/**/*.js'],
         tasks: ['jshint'],
         options: {
-            livereload: true
+          livereload: {
+            port: 9000
+          }        
         }
       },
       html: {
         files: ['public/views/**', 'app/views/**'],
         options: {
-            livereload: true
+          livereload: {
+            port: 9000
+          }
         }
       },
       css: {
         files: ['public/css/**'],
         options: {
-            livereload: true
+          livereload: {
+            port: 9000
+          }     
         }
       }
     },
     jshint: {
       all: {
-        src: ['Gruntfile.js', 'app.js', 'app/**/*.js', 'app/**/**/*.js','public/js/**'],
+        src: ['Gruntfile.js', 'app/**/*.js', 'app/**/**/*.js', 'app/**/**/**/*.js','public/js/**'],
         options: {
             jshintrc: true
         }
       }
     },
     nodemon: {
-      dev: {
-        script: 'app/page/app.js',
+      app: {
+        script: 'app/app/app.js',
         options: {
           args: [],
           ext: 'js',
-          nodeArgs: ['--debug'],
           delayTime: 1,
           env: {
             dev: {
@@ -72,12 +87,11 @@ module.exports = function(grunt) {
         options: {
           args: [],
           ext: 'js',
-          nodeArgs: ['--debug'],
           delayTime: 1,
           env: {
             dev: {
               NODE_ENV: 'development',
-              PORT: 3000
+              PORT: 3001
             }
           },
           cwd: __dirname
@@ -85,10 +99,19 @@ module.exports = function(grunt) {
       },
     },
     concurrent: {
-      tasks: ['nodemon', 'watch'],
-      options: {
-        logConcurrentOutput: true
+      app: {
+        tasks: ['nodemon:app'],
+        options: {
+          logConcurrentOutput: true
+        }
+      },
+      api: {
+        tasks: ['nodemon:api', 'watch'],
+        options: {
+          logConcurrentOutput: true
+        }
       }
+      
     },
     mochaTest: {
       options: {
@@ -123,9 +146,9 @@ module.exports = function(grunt) {
   // Making grunt default to force in order not to break the project.
   grunt.option('force', true);
 
-  // page task(s).
-  grunt.registerTask('build', ['clean:lib', 'copy:dev', 'env:dev', 'jshint', 'concurrent', 'nodeunit']);
+  // app task(s).
+  grunt.registerTask('app', ['clean:lib', 'copy:all', 'env:dev', 'jshint', 'concurrent:app']);
 
   // api task(s).
-  grunt.registerTask('api', ['clean:lib', 'copy:dev', 'env:dev', 'jshint', 'concurrent', 'nodeunit']);
+  grunt.registerTask('api', ['clean:lib', 'copy:all', 'env:dev', 'jshint', 'concurrent:api']);
 };

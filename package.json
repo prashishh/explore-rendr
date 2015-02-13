@@ -31,6 +31,7 @@
     "connect-flash": "^0.1.1",
     "connect-mongo": "~0.4.0",
     "cookie-parser": "^1.0.1",
+    "cuid": "^1.2.4",
     "express": "^4.0.0",
     "express-session": "^1.1.0",
     "forever": "~0.10.11",
@@ -54,7 +55,9 @@
     "superagent": "^0.18.0",
     "supertest": "^0.12.1",
     "type-is": "^1.2.0",
-    "url": "^0.10.1"
+    "url": "^0.10.1",
+    "multer": "^0.1.7",
+    "rendr": "^1.0.0"
   },
   "devDependencies": {
     "grunt-browser-sync": "^1.9.1",
@@ -67,7 +70,6 @@
     "grunt-env": "^0.4.1",
     "grunt-karma": "~0.6.2",
     "grunt-mocha-test": "latest",
-    "grunt-nodemon": "0.2.0",
-    "rendr": "^1.0.0"
+    "grunt-nodemon": "0.2.0"
   }
 }
