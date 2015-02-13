@@ -1,4 +1,5 @@
 .bower-cache/
 .bower-registry/
 .bower-tmp/
+.bowerrc
 node_modules/
