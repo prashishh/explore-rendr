@@ -5,130 +5,7 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    copy: {
-      all: {
-        files: [
-          {
-            expand: true, cwd: 'bower_components/backbone',
-            src: ['backbone.js'], dest: 'public/lib'
-          },
-          {
-            expand: true, cwd: 'bower_components/handlebars.js/lib',
-            src: ['handlebars.js'], dest: 'public/lib'
-          },
-          {
-            expand: true, cwd: 'bower_components/underscore',
-            src: ['underscore.js'], dest: 'public/lib'
-          }
-        ]
-      }
-    },
-    clean: {
-      lib: {
-        src: [
-          'public/lib',
-          'public/css/lib'
-        ]
-      }
-    },
-    watch: {
-      js: {
-        files: ['Gruntfile.js', 'app.js', 'app/**/*.js', 'public/js/**', 'test/**/*.js'],
-        tasks: ['jshint'],
-        options: {
-          livereload: {
-            port: 9000
-          }        
-        }
-      },
-      html: {
-        files: ['public/views/**', 'app/views/**'],
-        options: {
-          livereload: {
-            port: 9000
-          }
-        }
-      },
-      css: {
-        files: ['public/css/**'],
-        options: {
-          livereload: {
-            port: 9000
-          }     
-        }
-      }
-    },
-    jshint: {
-      all: {
-        src: ['Gruntfile.js', 'app/**/*.js', 'app/**/**/*.js', 'app/**/**/**/*.js','public/js/**'],
-        options: {
-            jshintrc: true
-        }
-      }
-    },
-    nodemon: {
-      app: {
-        script: 'app/app/app.js',
-        options: {
-          args: [],
-          ext: 'js',
-          delayTime: 1,
-          env: {
-            dev: {
-              NODE_ENV: 'development',
-              PORT: 3000
-            }
-          },
-          cwd: __dirname
-        }
-      },
-      api: {
-        script: 'app/api/app.js',
-        options: {
-          args: [],
-          ext: 'js',
-          delayTime: 1,
-          env: {
-            dev: {
-              NODE_ENV: 'development',
-              PORT: 3001
-            }
-          },
-          cwd: __dirname
-        }
-      },
-    },
-    concurrent: {
-      app: {
-        tasks: ['nodemon:app'],
-        options: {
-          logConcurrentOutput: true
-        }
-      },
-      api: {
-        tasks: ['nodemon:api', 'watch'],
-        options: {
-          logConcurrentOutput: true
-        }
-      }
-      
-    },
-    mochaTest: {
-      options: {
-        reporter: 'spec',
-        require: 'app.js'
-      },
-      src: ['test/mocha/**.js', 'app/controllers/order.js']
-    },
-    env: {
-      dev: {
-        NODE_ENV: 'development'
-      },
-      test: {
-        NODE_ENV: 'test',
-        MONGODB_URI: 'localhost/rendr-test'
-      }
-    },
+
     handlebars: {
       compile: {
         options: {
@@ -180,27 +57,52 @@ module.exports = function(grunt) {
         ],
         dest: 'public/testBundle.js'
       }
+    },
+
+    watch: {
+      scripts: {
+        files: 'app/**/*.js',
+        tasks: ['browserify'],
+        options: {
+          interrupt: true
+        }
+      },
+      templates: {
+        files: 'app/**/*.hbs',
+        tasks: ['handlebars'],
+        options: {
+          interrupt: true
+        }
+      }
     }
   });
 
   // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-contrib-handlebars');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-browser-sync');
-  grunt.loadNpmTasks('grunt-mocha-test');
-  grunt.loadNpmTasks('grunt-nodemon');
-  grunt.loadNpmTasks('grunt-concurrent');
-  grunt.loadNpmTasks('grunt-env');
+
+  grunt.registerTask('runNode', function () {
+    grunt.util.spawn({
+      cmd: 'node',
+      args: ['./node_modules/nodemon/nodemon.js', 'index.js'],
+      opts: {
+        stdio: 'inherit'
+      }
+    }, function () {
+      grunt.fail.fatal(new Error("nodemon quit"));
+    });
+  });
 
   // Making grunt default to force in order not to break the project.
   grunt.option('force', true);
 
   // app task(s).
-  grunt.registerTask('app', ['clean:lib', 'copy:all', 'env:dev', 'jshint', 'concurrent:app']);
+  // grunt.registerTask('app', ['clean:lib', 'copy:all', 'env:dev', 'jshint', 'concurrent:app']);
 
   // api task(s).
-  grunt.registerTask('api', ['clean:lib', 'copy:all', 'env:dev', 'jshint', 'concurrent:api']);
+  // grunt.registerTask('api', ['clean:lib', 'copy:all', 'env:dev', 'jshint', 'concurrent:api']);
+
+  // default
+  grunt.registerTask('default', ['handlebars', 'browserify', 'runNode', 'watch']);
 };

@@ -1,14 +1,32 @@
 var express = require('express')
   , rendr = require('rendr')
-  , app = express();
+  , app = express()
+  , multer = require('multer')
+  , path = require('path')
+  , cuid = require('cuid');
+
+// request id for logger
+var requestId = function requestId(req, res, next) {
+  req.requestId = cuid.slug();
+  next();
+};
 
 /**
  * Initialize Express middleware stack.
  */
-app.use(express.compress());
-app.use(express.static(__dirname + '/public'));
-app.use(express.logger());
-app.use(express.bodyParser());
+// middleware
+app.use(require('morgan')('dev'));  //  http request logger middleware for nodejs
+app.use(require('compression')());  //  compression middleware for nodejs and connect 
+app.use(require('serve-static')(path.join(__dirname, '/public'))); //  server static files
+//app.use(require('body-parser')());  //  parse application/json and application/x-www-form-urlencoded
+app.use(require('body-parser').json());
+app.use(require('body-parser').urlencoded({
+  extended: true
+}));
+app.use(multer({ dest: './tmp/'}));
+app.use(require('method-override')());  //  use HTTP verbs like PUT or DELETE
+app.use(require('cookie-parser')());  //  parse Cookie header and populate req.cookies with an object keyed by the cookie names.
+app.use(requestId); // request id for logger
 
 /**
  * In this simple example, the DataAdapter config, which specifies host, port, etc. of the API
