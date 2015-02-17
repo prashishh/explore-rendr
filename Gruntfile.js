@@ -128,6 +128,58 @@ module.exports = function(grunt) {
         NODE_ENV: 'test',
         MONGODB_URI: 'localhost/rendr-test'
       }
+    },
+    handlebars: {
+      compile: {
+        options: {
+          namespace: false,
+          commonjs: true,
+          processName: function(filename) {
+            return filename.replace('app/templates/', '').replace('.hbs', '');
+          }
+        },
+        src: "app/templates/**/*.hbs",
+        dest: "app/templates/compiledTemplates.js",
+        filter: function(filepath) {
+          var filename = path.basename(filepath);
+          // Exclude files that begin with '__' from being sent to the client,
+          // i.e. __layout.hbs.
+          return filename.slice(0, 2) !== '__';
+        }
+      }
+    },
+    
+    browserify: {
+      options: {
+        debug: true,
+        alias: [
+          'node_modules/rendr-handlebars/index.js:rendr-handlebars'
+        ],
+        aliasMappings: [
+          {
+            cwd: 'app/',
+            src: ['**/*.js'],
+            dest: 'app/'
+          }
+        ],
+        shim: {
+          jquery: {
+            path: 'assets/vendor/jquery-1.9.1.min.js',
+            exports: '$'
+          }
+        }
+      },
+      app: {
+        src: [ 'app/**/*.js' ],
+        dest: 'public/mergedAssets.js'
+      },
+      tests: {
+        src: [
+          'test/helper.js',
+          'test/app/**/*.js'
+        ],
+        dest: 'public/testBundle.js'
+      }
     }
   });
 
