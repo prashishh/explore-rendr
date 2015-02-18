@@ -15,8 +15,9 @@ module.exports = function(grunt) {
             return filename.replace('app/templates/', '').replace('.hbs', '');
           }
         },
-        src: "app/templates/**/*.hbs",
-        dest: "app/templates/compiledTemplates.js",
+        files: {
+          'app/templates/compiledTemplates.js': ['app/templates/**/*.hbs']
+        },
         filter: function(filepath) {
           var filename = path.basename(filepath);
           // Exclude files that begin with '__' from being sent to the client,
@@ -49,13 +50,6 @@ module.exports = function(grunt) {
       app: {
         src: [ 'app/**/*.js' ],
         dest: 'public/mergedAssets.js'
-      },
-      tests: {
-        src: [
-          'test/helper.js',
-          'test/app/**/*.js'
-        ],
-        dest: 'public/testBundle.js'
       }
     },
 

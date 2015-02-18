@@ -1,7 +1,7 @@
 module.exports = function(match) {
-  match('',                   'home#index');
-  match('repos',              'repos#index');
-  match('repos/:owner/:name', 'repos#show');
-  match('users'       ,       'users#index');
-  match('users/:login',       'users#show');
+  match('',                   'home#index');	// Homepage
+  match('city',              	'city#index');	// List of Cities
+  match('court',			 				'city#show');		// List of tennis courts
+  match('court/:courtid',			'court#index');	// View tennis court page	
+  match('court/:city',       	'court#show');	// List of all tennis courts in a city
 };

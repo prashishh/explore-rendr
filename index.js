@@ -11,9 +11,6 @@ var requestId = function requestId(req, res, next) {
   next();
 };
 
-/**
- * Initialize Express middleware stack.
- */
 // middleware
 app.use(require('morgan')('dev'));  //  http request logger middleware for nodejs
 app.use(require('compression')());  //  compression middleware for nodejs and connect 
@@ -36,12 +33,8 @@ app.use(requestId); // request id for logger
  */
 var dataAdapterConfig = {
   'default': {
-    host: 'api.github.com',
-    protocol: 'https'
-  },
-  'travis-ci': {
-    host: 'api.travis-ci.org',
-    protocol: 'https'
+    host: 'localhost:3000',
+    protocol: 'http'
   }
 };
 
@@ -68,13 +61,8 @@ app.use(server);
 function start(){
   var port = process.env.PORT || 3030;
   app.listen(port);
-  console.log("server pid %s listening on port %s in %s mode",
-    process.pid,
-    port,
-    app.get('env')
-  );
+  console.log("App server started on port %s", port);
 }
-
 
 /**
  * Only start server if this script is executed, not if it's require()'d.
