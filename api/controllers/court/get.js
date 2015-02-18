@@ -2,21 +2,31 @@
 
 var mongoose = require('mongoose'),
 		TennisCourt = mongoose.model('TennisCourt'),
-		request = require('request'),
-		accepts = require('accepts'),
 		log4js = require('log4js');
 
 
-log4js.configure('./config/log.json');
+//log4js.configure('../config/log.json');
 var logger = log4js.getLogger('app');
 
 /**	Get all tennis courts
 	*	 
 	*/
-module.exports.getCourts = function(req, res) {
+module.exports.getAll = function(req, res) {
 	logger.info('[' + req.requestId + ']: ' + req.ip + '/' + req.hostname);
 	logger.info('[' + req.requestId + ']: ' + 'call to retrieve tennis courts');
 
+	var t = new TennisCourt({
+		name: '123',
+		city: '123'
+	});
+
+	t.save(function(err) {
+		if(err)
+			console.log('error');
+		else
+			console.log('done');
+	});
+	
 	res.set('Content-Type', 'application/json');
 	TennisCourt.find({}, function(err, result) {
 		if(err) {
@@ -29,7 +39,7 @@ module.exports.getCourts = function(req, res) {
 				logger.trace('[' + req.requestId + ']: ' + JSON.stringify(result));
 				res.status(200).send(result);
 			} else {
-				logger.error('[' + req.requestId + ']: ' + 'Error retrieving tennis courts ' + ' - ' + err);
+				logger.error('[' + req.requestId + ']: ' + 'No Tennis Court Details ' + ' - ' + err);
 				res.status(200).send(null);
 			}
 		}

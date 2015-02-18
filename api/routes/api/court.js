@@ -1,5 +1,9 @@
 'use strict';
 
+var court = require('../../controllers/court');
+
 module.exports = function(app) {
-//	require('./reader')(app);
+
+	app.get('/api/court', court.getAll);
+
 };

@@ -6,3 +6,5 @@ exports.mongodb = {
   uri: process.env.MONGODB_URI || 'mongodb://localhost/tennis-court',
   db: process.env.MONGODB_DB || 'tennis-court'
 };
+
+exports.cryptoKey = 'cRypT0gr@ph&';
