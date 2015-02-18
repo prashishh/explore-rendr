@@ -10,7 +10,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 
   buffer += "<!doctype html>\n<html lang=\"en\">\n\n  <head>\n    <meta charset='utf-8'/>\n    <title>"
     + escapeExpression(((stack1 = ((stack1 = depth0.appData),stack1 == null || stack1 === false ? stack1 : stack1.title)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + " | Rendr Example App</title>\n    \n    <link href=\"/styles.css\" media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n    <link href=\"/styles.css\" media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n\n  <body class=\"\">\n    <div class=\"navbar navbar-inverse navbar-fixed-top\">\n      <div class=\"container\">\n          <div class=\"navbar-header\">\n            <a class=\"navbar-brand\" href=\"/\">GitHub Browser</a>\n          </div>\n          <ul class=\"nav navbar-nav\">\n            <li><a href=\"/\">Home</a></li>\n            <li><a href=\"/repos\">Repos</a></li>\n            <li><a href=\"/users\">Users</a></li>\n          </ul>\n          <div class=\"loading-indicator\">Loading&hellip;</div>\n        </div>\n\n    </div>\n\n    <section id=\"content\" class=\"container\">\n      ";
+    + " | Rendr Example App</title>\n    \n    <link href=\"/styles.css\" media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n\n  <body class=\"\">\n    <div class=\"navbar navbar-inverse navbar-fixed-top\">\n      <div class=\"container\">\n          <div class=\"navbar-header\">\n            <a class=\"navbar-brand\" href=\"/\">TennCourts</a>\n          </div>\n          <ul class=\"nav navbar-nav\">\n            <li><a href=\"/\">Home</a></li>\n            <li><a href=\"/court\">Tennis Courts</a></li>\n            <li><a href=\"/city\">Cities</a></li>\n          </ul>\n          <div class=\"loading-indicator\">Loading&hellip;</div>\n        </div>\n\n    </div>\n\n    <section id=\"content\" class=\"container\">\n      ";
   if (stack2 = helpers.body) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
   else { stack2 = depth0.body; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
   if(stack2 || stack2 === 0) { buffer += stack2; }
@@ -48,9 +48,9 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
 
-  buffer += "<h1>Wecome to GitHub Browser!</h1>\n<p>This is a little app that demonstrates how to use Rendr by consuming GitHub's public Api.</p>\n<p>Check out <a href=\"/repos\">Repos</a> or <a href=\"/users\">Users</a>.</p>\n\n<p>";
+  buffer += "<h2>Wecome to TennCourts!</h2>\n<p>Get data of millions of Tennis Courts around the world. </p>\n<p>TennCourts collects data from various sources to provide you an API to consume its data for free. </p>\n\n<p>";
   options = {hash:{},data:data};
-  buffer += escapeExpression(((stack1 = helpers.copyright || depth0.copyright),stack1 ? stack1.call(depth0, "2013", options) : helperMissing.call(depth0, "copyright", "2013", options)))
+  buffer += escapeExpression(((stack1 = helpers.copyright || depth0.copyright),stack1 ? stack1.call(depth0, "2015", options) : helperMissing.call(depth0, "copyright", "2015", options)))
     + "</p>\n";
   return buffer;
   });
