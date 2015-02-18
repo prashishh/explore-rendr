@@ -26,6 +26,18 @@ module.exports = function(grunt) {
         }
       }
     },
+
+    stylus: {
+      compile: {
+        options: {
+          paths: ['assets/stylesheets'],
+          'include css': true
+        },
+        files: {
+          'public/styles.css': 'assets/stylesheets/index.styl'
+        }
+      }
+    },
     
     browserify: {
       options: {
@@ -74,6 +86,7 @@ module.exports = function(grunt) {
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-handlebars');
+  grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('runNode', function () {
@@ -98,5 +111,5 @@ module.exports = function(grunt) {
   // grunt.registerTask('api', ['clean:lib', 'copy:all', 'env:dev', 'jshint', 'concurrent:api']);
 
   // default
-  grunt.registerTask('default', ['handlebars', 'browserify', 'runNode', 'watch']);
+  grunt.registerTask('default', ['handlebars', 'browserify', 'stylus', 'runNode', 'watch']);
 };

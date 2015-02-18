@@ -38,14 +38,14 @@
     "underscore": "~1.5.2"
   },
   "devDependencies": {
+    "chai": "~1.8.1",
     "grunt": "~0.4.1",
     "grunt-browserify": "~1.2.9",
-    "grunt-contrib-stylus": "~0.5.0",
     "grunt-contrib-handlebars": "~0.5.11",
+    "grunt-contrib-stylus": "^0.20.0",
     "grunt-contrib-watch": "~0.3.1",
-    "nodemon": "~0.7.6",
     "mocha": "~1.9.0",
-    "chai": "~1.8.1"
+    "nodemon": "~0.7.6"
   },
   "engines": {
     "node": ">=0.8"
