@@ -3,7 +3,8 @@ var express = require('express')
   , app = express()
   , multer = require('multer')
   , path = require('path')
-  , cuid = require('cuid');
+  , cuid = require('cuid')
+  , config = require('./api/config/config') ;
 
 // request id for logger
 var requestId = function requestId(req, res, next) {
@@ -33,7 +34,7 @@ app.use(requestId); // request id for logger
  */
 var dataAdapterConfig = {
   default: {
-    host: process.env.EXT_URL || 'localhost:3001',
+    host: config.external_url,
     protocol: 'https'
   }
 };

@@ -2,7 +2,7 @@
 
 exports.port = process.env.PORT || 3001;
 
-exports.external_url = process.env.EXT_URL || 'localhost:3001';
+exports.external_url = process.env.EXT_URL || 'rendr-api.herokuapp.com';
 
 exports.mongodb = {
   uri: process.env.MONGODB_URI || 'mongodb://localhost/tennis-court',
