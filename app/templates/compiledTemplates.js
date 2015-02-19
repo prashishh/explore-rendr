@@ -63,6 +63,26 @@ function program1(depth0,data) {
   if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
+    + "</td>\n      </tr>\n      <tr>\n        <th>Country</th>\n        <td>";
+  if (stack1 = helpers.country) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.country; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</td>\n      </tr>\n      <tr>\n        <th>Tournament</th>\n        <td>";
+  if (stack1 = helpers.tournament) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.tournament; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</td>\n      </tr>\n        <th>Tour</th>\n        <td>";
+  if (stack1 = helpers.tour) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.tour; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</td>\n      </tr>\n      <tr>\n        <th>Capacity</th>\n        <td>";
+  if (stack1 = helpers.capacity) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.capacity; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</td>\n      </tr>\n      <tr>\n        <th>Rank</th>\n        <td>";
+  if (stack1 = helpers.rank) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.rank; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
     + "</td>\n      </tr>\n      <tr>\n        <th>City</th>\n        <td>";
   if (stack1 = helpers.city) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.city; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
@@ -120,6 +140,26 @@ function program1(depth0,data) {
     + "</h3>\n    <table class=\"info-table table\">\n      <tr>\n        <th>Name</th>\n        <td>";
   if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</td>\n      </tr>\n      <tr>\n        <th>Country</th>\n        <td>";
+  if (stack1 = helpers.country) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.country; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</td>\n      </tr>\n      <tr>\n        <th>Tournament</th>\n        <td>";
+  if (stack1 = helpers.tournament) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.tournament; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</td>\n      </tr>\n        <th>Tour</th>\n        <td>";
+  if (stack1 = helpers.tour) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.tour; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</td>\n      </tr>\n      <tr>\n        <th>Capacity</th>\n        <td>";
+  if (stack1 = helpers.capacity) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.capacity; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</td>\n      </tr>\n      <tr>\n        <th>Rank</th>\n        <td>";
+  if (stack1 = helpers.rank) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.rank; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
     + "</td>\n      </tr>\n      <tr>\n        <th>City</th>\n        <td>";
   if (stack1 = helpers.city) { stack1 = stack1.call(depth0, {hash:{},data:data}); }

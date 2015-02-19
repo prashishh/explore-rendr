@@ -80,6 +80,17 @@ module.exports = function(grunt) {
           interrupt: true
         }
       }
+    },
+    nodemon: {
+      dev: {
+        script: 'api/app.js',
+        options: {
+          args: [],
+          ext: 'js',
+          delayTime: 1,
+          cwd: __dirname
+        }
+      }
     }
   });
 
@@ -88,7 +99,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-handlebars');
   grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-watch');
-
+  grunt.loadNpmTasks('grunt-nodemon');
+  
   grunt.registerTask('runNode', function () {
     grunt.util.spawn({
       cmd: 'node',
@@ -111,5 +123,9 @@ module.exports = function(grunt) {
   // grunt.registerTask('api', ['clean:lib', 'copy:all', 'env:dev', 'jshint', 'concurrent:api']);
 
   // default
-  grunt.registerTask('default', ['handlebars', 'browserify', 'stylus', 'runNode', 'watch']);
+  grunt.registerTask('app', ['handlebars', 'browserify', 'stylus', 'runNode', 'watch']);
+
+  // api server
+  grunt.registerTask('api', ['nodemon']);
+
 };

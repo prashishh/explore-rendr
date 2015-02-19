@@ -51,6 +51,7 @@
     "grunt-contrib-handlebars": "~0.5.11",
     "grunt-contrib-stylus": "^0.20.0",
     "grunt-contrib-watch": "~0.3.1",
+    "grunt-nodemon": "^0.4.0",
     "mocha": "~1.9.0",
     "nodemon": "~0.7.6"
   },
