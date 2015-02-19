@@ -33,7 +33,7 @@ app.use(requestId); // request id for logger
  */
 var dataAdapterConfig = {
   default: {
-    host: 'localhost:3001',
+    host: process.env.EXT_URL || 'localhost:3001',
     protocol: 'http'
   }
 };
