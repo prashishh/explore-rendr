@@ -4,6 +4,7 @@ var CourtGET = require('./court/get');
 
 module.exports = {
 	
-	getAll: CourtGET.getAll
+	getAll: CourtGET.getAll,
+	getCourt: CourtGET.getCourt
 
 };

@@ -1,2 +1,9 @@
-<h1>Users</h1>
+<h2>Cities</h2>
 
+<ul>
+{{#each models}}
+  <li>
+    <a href='/city/{{_id.city}}'>{{_id.city}}</a>
+  </li>
+{{/each}}
+</ul>

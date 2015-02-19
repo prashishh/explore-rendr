@@ -1,2 +1,9 @@
-<h1>Users</h1>
+<h2>Tennis Courts</h2>
 
+<ul>
+{{#each models}}
+  <li>
+    <a href='/court/{{_id}}'>{{name}}</a>
+  </li>
+{{/each}}
+</ul>

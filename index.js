@@ -32,8 +32,8 @@ app.use(requestId); // request id for logger
  * `dataAdapter` object to the call to `rendr.createServer()`.
  */
 var dataAdapterConfig = {
-  'default': {
-    host: 'localhost:3000',
+  default: {
+    host: 'localhost:3001',
     protocol: 'http'
   }
 };
