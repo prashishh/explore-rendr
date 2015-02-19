@@ -1,6 +1,7 @@
 ## Sample Tennis Court App using Rendr
 
-** Deploy **
+####Deploy
+
 `grunt app` to deploy node server
 
 `grunt api` to deploy the api server
@@ -20,7 +21,8 @@ db: process.env.MONGODB_DB || 'tennis-court'
 *Default port is 3030 and 3001 for app and api servers respectively.*
 
 
-** Live **
+####Live
+
 App: https://rendr-app.herokuapp.com/
 
 Api: https://rendr-app.herokuapp.com/
