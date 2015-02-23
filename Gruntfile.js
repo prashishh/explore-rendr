@@ -62,6 +62,13 @@ module.exports = function(grunt) {
       app: {
         src: [ 'app/**/*.js' ],
         dest: 'public/mergedAssets.js'
+      },
+      tests: {
+        src: [
+          'test/helper.js',
+          'test/app/**/*.js'
+        ],
+        dest: 'public/testBundle.js'
       }
     },
 
@@ -91,6 +98,13 @@ module.exports = function(grunt) {
           cwd: __dirname
         }
       }
+    },
+    karma: {
+      unit: {
+        options: {
+          files: ['test/**/*.js']
+        }
+      }
     }
   });
 
@@ -100,6 +114,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-karma');
   
   grunt.registerTask('runNode', function () {
     grunt.util.spawn({
@@ -127,5 +142,8 @@ module.exports = function(grunt) {
 
   // api server
   grunt.registerTask('api', ['nodemon']);
+
+  // api server
+  grunt.registerTask('test', ['karma']);
 
 };

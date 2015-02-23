@@ -5,7 +5,6 @@ module.exports = function (config) {
     files: [
       '../public/testBundle.js'
     ],
-    frameworks: [ 'mocha' ],
-    browsers: [ 'Chrome' ]
+    frameworks: [ 'mocha' ]
   });
 };
