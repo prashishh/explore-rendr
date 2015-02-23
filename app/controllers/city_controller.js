@@ -5,6 +5,7 @@ module.exports = {
     var spec = {
       collection: {
       	collection: 'City', 
+        needsFetch: true,
       	params: params
       }
     };
@@ -21,6 +22,7 @@ module.exports = {
 		var spec = {
       collection: {
         collection: 'City',
+        needsFetch: true,
         params: params
       }
     };

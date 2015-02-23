@@ -4,8 +4,8 @@ var Court = require('../models/court')
 module.exports = Base.extend({
   model: Court,
   url: function() {
-    if (this.params.name != null) {
-      return '/api/court/:name';
+    if (this.params.courtname != null) {
+      return '/api/court/:courtname';
     } else {
       return '/api/court';
     }

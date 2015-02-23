@@ -4,8 +4,8 @@ var City = require('../models/city')
 module.exports = Base.extend({
   model: City,
   url: function() {
-    if (this.params.name != null) {
-      return '/api/city/:name';
+    if (this.params.cityname != null) {
+      return '/api/city/:cityname';
     } else {
       return '/api/city';
     }

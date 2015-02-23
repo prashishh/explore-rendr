@@ -1,8 +1,8 @@
 var Base = require('./base');
 
 module.exports = Base.extend({
-  url: '/court/:name',
-  idAttribute: 'name'
+  url: '/court/:courtname',
+  idAttribute: 'courtname'
 });
 
 module.exports.id = 'Court';
